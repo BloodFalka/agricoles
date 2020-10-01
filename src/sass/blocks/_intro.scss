@@ -1,0 +1,99 @@
+.intro {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 700px;
+        background: $background url("../assets/img/backgrounds/mainpage-head-bg.jpg") center/cover;
+        .intro__content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            width: 70%;
+            padding: 90px;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(7px);
+            border-radius: 4px;
+            text-align: center;
+            .intro__activity-kind {
+                line-height: 30px;
+                font-size: 30px;
+            }
+            .intro__title {
+                line-height: 150px;
+                font-size: 150px;
+            }
+            .intro__town {
+                line-height: 25px;
+                font-size: 25px;
+            }
+        }
+    }
+}
+
+@media (max-width: 1200px) {}
+
+@media (max-width: 991px) {
+    .intro {
+        .container {
+            min-height: 450px;
+            .intro__content {
+                padding: 50px;
+                .intro__activity-kind {
+                    line-height: 18px;
+                    font-size: 18px;
+                }
+                .intro__title {
+                    line-height: 60px;
+                    font-size: 60px;
+                }
+                .intro__town {
+                    line-height: 16px;
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .intro {
+        .container {
+            min-height: 350px;
+            .intro__content {
+                padding: 40px;
+                width: 70%;
+                .intro__activity-kind {
+                    line-height: 16px;
+                    font-size: 16px;
+                }
+                .intro__title {
+                    line-height: 50px;
+                    font-size: 50px;
+                }
+                .intro__town {
+                    line-height: 14px;
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 575px) {
+    .intro {
+        .container {
+            .intro__content {
+                padding: 20px;
+                width: 90%;
+                .intro__activity-kind {}
+                .intro__title {}
+                .intro__town {}
+            }
+        }
+    }
+}

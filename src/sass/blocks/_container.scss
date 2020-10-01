@@ -1,0 +1,15 @@
+.container {
+    height: 100%;
+    position: relative;
+    width: 1440px;
+    padding: 0 15px;
+    &_slim {
+        padding: 0;
+    }
+}
+
+@media (max-width: 1200px) {
+    .container {
+        width: 100%;
+    }
+}

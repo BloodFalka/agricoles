@@ -1,0 +1,20 @@
+@import "libs/bootstrap-reboot";
+@import "base/variables";
+@import "base/social-fonts";
+@import "base/scrollbar";
+* {
+    font-family: monospace;
+}
+
+body {
+    background-color: $background;
+}
+
+@import "blocks/container";
+@import "blocks/header";
+@import "blocks/logo";
+@import "blocks/intro";
+@import "blocks/about-me";
+@import "blocks/visualization";
+@import "blocks/contacts";
+@import "blocks/footer";

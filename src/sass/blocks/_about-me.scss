@@ -1,0 +1,42 @@
+.about-me {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .container {
+        display: flex;
+        padding: 70px;
+        align-items: center;
+        justify-content: space-between;
+        .about-me__foto {
+            height: 32%;
+            width: 32%;
+            margin-right: 80px;
+        }
+        .about-me__descr {
+            font-size: 16px;
+            span {
+                display: block;
+                margin-bottom: 15px;
+            }
+            text-align: center;
+        }
+    }
+}
+
+@media (max-width: 575px) {
+    .about-me {
+        .container {
+            padding: 15px 15px;
+            flex-direction: column;
+            .about-me__foto {
+                height: 80%;
+                width: 80%;
+                margin-right: 0px;
+            }
+            .about-me__descr {
+                margin-top: 10px;
+                font-size: 14px;
+            }
+        }
+    }
+}
