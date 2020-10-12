@@ -1,0 +1,14 @@
+.button{
+    padding: 25px;
+    background-color: $bulka-light-green;
+    color: white;
+    font-size: 20px;
+    border: none;
+    border-radius: 10px;
+    &:active, &:hover{
+        background-color: $bulkas-green;
+    }
+    &:active{
+        transform: scale(0.9);
+    }
+}

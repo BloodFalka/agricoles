@@ -1,0 +1,30 @@
+.gallery{
+    margin: 40px 0px 0px 0px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    .container{
+        padding: 0px 5px;
+        img{
+            cursor: pointer;
+        }
+        h1{
+            font-family: 'Red Hat Display';
+            font-weight: normal;
+            font-size: 25px;
+            text-align: center;
+        }
+    }
+   
+}
+
+@media (max-width: 575px) {
+    .gallery{
+        margin: 15px 0px 0px 0px;
+        .container {
+            h1 {
+                font-size: 20px;
+            }
+        }
+    }
+}
