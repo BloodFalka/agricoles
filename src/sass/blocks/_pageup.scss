@@ -1,0 +1,40 @@
+.pageup {
+    .icon-circle-up{
+        cursor: pointer;
+        display: none;
+        bottom: 40px;
+        right: 50px;
+        position: fixed;
+        color: $bulka-light-green;
+        text-shadow: 1px 1px 5px $bulkas-green;
+        font-size: 50px;
+    }
+}
+
+@media (max-width: 991px) {
+    .pageup {
+        .icon-circle-up{
+            bottom: 30px;
+            right: 30px;
+            font-size: 50px;
+        }
+    }
+}
+
+
+@media (max-width: 767px) {
+    .pageup {
+        .icon-circle-up{
+
+            font-size: 40px;
+        }
+    }
+}
+
+@media (max-width: 575px) {
+    .pageup {
+        .icon-circle-up{
+
+        }
+    }
+}

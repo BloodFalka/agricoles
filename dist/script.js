@@ -2675,15 +2675,17 @@ module.exports = g;
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _modules_modals__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/modals */ "./src/js/modules/modals.js");
-/* harmony import */ var _modules_sliders__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/sliders */ "./src/js/modules/sliders.js");
-/* harmony import */ var _modules_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/forms */ "./src/js/modules/forms.js");
-/* harmony import */ var _modules_mask__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/mask */ "./src/js/modules/mask.js");
-/* harmony import */ var _modules_tabs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/tabs */ "./src/js/modules/tabs.js");
-/* harmony import */ var wowjs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! wowjs */ "./node_modules/wowjs/dist/wow.js");
-/* harmony import */ var wowjs__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(wowjs__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var macy__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! macy */ "./node_modules/macy/dist/macy.js");
-/* harmony import */ var macy__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(macy__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _modules_macy__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/macy */ "./src/js/modules/macy.js");
+/* harmony import */ var _modules_modals__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/modals */ "./src/js/modules/modals.js");
+/* harmony import */ var _modules_sliders__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/sliders */ "./src/js/modules/sliders.js");
+/* harmony import */ var _modules_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/forms */ "./src/js/modules/forms.js");
+/* harmony import */ var _modules_mask__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/mask */ "./src/js/modules/mask.js");
+/* harmony import */ var _modules_tabs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/tabs */ "./src/js/modules/tabs.js");
+/* harmony import */ var _modules_wow__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modules/wow */ "./src/js/modules/wow.js");
+/* harmony import */ var _modules_timedLink__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./modules/timedLink */ "./src/js/modules/timedLink.js");
+/* harmony import */ var _modules_moveUp__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./modules/moveUp */ "./src/js/modules/moveUp.js");
+
+
 
 
 
@@ -2694,57 +2696,16 @@ __webpack_require__.r(__webpack_exports__);
 window.addEventListener('DOMContentLoaded', function () {
   'use strict';
 
-  if (document.querySelectorAll('.visualization__items').length) Object(_modules_modals__WEBPACK_IMPORTED_MODULE_0__["default"])(); // tabs(
-  //   ".visualization__tabs",
-  //   ".visualization__tab",
-  //   ".visualization__items",
-  //   "active"
-  //   );
-
-  var wow = new wowjs__WEBPACK_IMPORTED_MODULE_5__["WOW"]({
-    boxClass: 'wow',
-    // animated element css class (default is wow)
-    animateClass: '',
-    // animation css class (default is animated)
-    offset: 0,
-    // distance to the element when triggering the animation (default is 0)
-    mobile: true,
-    // trigger animations on mobile devices (default is true)
-    live: true,
-    // act on asynchronously loaded content (default is true)
-    scrollContainer: null // optional scroll container selector, otherwise use window
-
-  });
-  wow.init();
-
-  if (document.querySelectorAll('.macy-container').length) {
-    var macy = macy__WEBPACK_IMPORTED_MODULE_6___default()({
-      container: '.macy-container',
-      trueOrder: false,
-      waitForImages: false,
-      margin: 5,
-      columns: 3,
-      breakAt: {
-        1200: 3,
-        940: 3,
-        520: 2,
-        400: 2
-      }
-    });
-    var gallery = document.querySelector('.gallery');
-    macy.runOnImageLoad(function () {
-      gallery.classList.add('wow');
-      gallery.classList.add('fade-in-1_5s');
-      gallery.style.display = 'flex';
-      document.querySelector('.footer').classList.add('fade-in-1_5s');
-      document.querySelector('.footer').style.display = 'flex';
-    }, true);
-  }
+  if (document.querySelectorAll('.visualization__items').length) Object(_modules_modals__WEBPACK_IMPORTED_MODULE_1__["default"])();
+  Object(_modules_macy__WEBPACK_IMPORTED_MODULE_0__["macy"])();
+  Object(_modules_wow__WEBPACK_IMPORTED_MODULE_6__["useWow"])();
 
   if (document.querySelectorAll('.consultation__form').length) {
-    Object(_modules_mask__WEBPACK_IMPORTED_MODULE_3__["default"])('.consultation__phone');
-    Object(_modules_forms__WEBPACK_IMPORTED_MODULE_2__["default"])('.consultation__form', '.consultation__button', '.consultation__status');
+    Object(_modules_mask__WEBPACK_IMPORTED_MODULE_4__["default"])('.consultation__phone');
+    Object(_modules_forms__WEBPACK_IMPORTED_MODULE_3__["default"])('.consultation__form', '.consultation__button', '.consultation__status');
   }
+
+  Object(_modules_moveUp__WEBPACK_IMPORTED_MODULE_8__["moveUp"])();
 });
 
 /***/ }),
@@ -2765,28 +2726,42 @@ var forms = function forms(formSelector, submitSelector, statusSelector) {
   var button = document.querySelector(submitSelector);
   var status = document.querySelector(statusSelector); // Success and Error functions for after the form is submitted
 
-  function success() {
-    form.reset();
-    button.style = 'display: none ';
-    status.innerHTML = 'Спасибо, сообщение успешно отправлено!';
-    status.style = 'display: block ';
-  }
+  var deleteSpinner = function deleteSpinner() {
+    var statusWrapper = document.querySelector('.consultation__status-wrapper');
+    var statusImg = document.querySelector('.consultation__status-img');
+    statusWrapper.removeChild(statusImg);
+  };
 
-  function error() {
-    button.style.display = 'none';
+  var success = function success() {
+    form.reset();
+    deleteSpinner();
+    status.innerHTML = 'Спасибо, сообщение успешно отправлено!';
+    status.classList.add('heartbeat-once');
+    status.style = 'display: block ';
+  };
+
+  var error = function error() {
+    deleteSpinner();
     status.innerHTML = 'Что-то пошло не так, Перезагрузите страницу и попробуйте ещё раз';
+    status.classList.add('shake-horizontal');
     status.style.display = 'block';
     status.style.backgroundColor = '#2a2b2a';
-  } // handle the form submission event
+  }; // handle the form submission event
 
 
   form.addEventListener('submit', function (ev) {
     ev.preventDefault();
     var data = new FormData(form);
+    button.style.display = 'none';
+    var statusImg = document.createElement('img'); // Create a <li> node
+
+    statusImg.src = './assets/img/spinner.svg';
+    statusImg.classList.add('consultation__status-img');
+    document.querySelector('.consultation__status-wrapper').appendChild(statusImg);
     ajax(form.method, form.action, data, success, error);
   }); // helper function for sending an AJAX request
 
-  function ajax(method, url, data, success, error) {
+  var ajax = function ajax(method, url, data, success, error) {
     var xhr = new XMLHttpRequest();
     xhr.open(method, url);
     xhr.setRequestHeader('Accept', 'application/json');
@@ -2796,18 +2771,59 @@ var forms = function forms(formSelector, submitSelector, statusSelector) {
 
       if (xhr.status === 200) {
         success(xhr.response, xhr.responseType);
-        status.classList.add('heartbeat-once');
       } else {
         error(xhr.status, xhr.response, xhr.responseType);
-        status.classList.add('shake-horizontal');
       }
     };
 
     xhr.send(data);
-  }
+  };
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (forms);
+
+/***/ }),
+
+/***/ "./src/js/modules/macy.js":
+/*!********************************!*\
+  !*** ./src/js/modules/macy.js ***!
+  \********************************/
+/*! exports provided: macy */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "macy", function() { return macy; });
+/* harmony import */ var macy__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! macy */ "./node_modules/macy/dist/macy.js");
+/* harmony import */ var macy__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(macy__WEBPACK_IMPORTED_MODULE_0__);
+
+var macy = function macy() {
+  if (document.querySelectorAll('.macy-container').length) {
+    var _macy = macy__WEBPACK_IMPORTED_MODULE_0___default()({
+      container: '.macy-container',
+      trueOrder: false,
+      waitForImages: true,
+      margin: 15,
+      columns: 3,
+      breakAt: {
+        575: {
+          columns: 2,
+          margin: 5
+        }
+      }
+    });
+
+    var gallery = document.querySelector('.gallery');
+
+    _macy.runOnImageLoad(function () {
+      gallery.classList.add('wow');
+      gallery.classList.add('fade-in-1_5s');
+      gallery.style.display = 'flex';
+      document.querySelector('.footer').classList.add('fade-in-1_5s');
+      document.querySelector('.footer').style.display = 'flex';
+    }, true);
+  }
+};
 
 /***/ }),
 
@@ -3016,6 +3032,40 @@ var modals = function modals() {
 
 /***/ }),
 
+/***/ "./src/js/modules/moveUp.js":
+/*!**********************************!*\
+  !*** ./src/js/modules/moveUp.js ***!
+  \**********************************/
+/*! exports provided: moveUp */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "moveUp", function() { return moveUp; });
+var moveUp = function moveUp() {
+  var showingPosition = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1800;
+  window.addEventListener('scroll', function () {
+    var windowY = window.scrollY;
+    var up = document.querySelector('#up');
+
+    if (windowY < showingPosition) {
+      up.classList.add('fade-out-1_5s');
+    } else {
+      up.classList.remove('fade-out-1_5s');
+      up.classList.add('fade-in-1_5s');
+      up.style.display = 'block'; // Scrolling DOWN
+    }
+  });
+  document.querySelector('#up').addEventListener('click', function (ev) {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+};
+
+/***/ }),
+
 /***/ "./src/js/modules/sliders.js":
 /*!***********************************!*\
   !*** ./src/js/modules/sliders.js ***!
@@ -3164,6 +3214,57 @@ var tabs = function tabs(headerSelector, tabSelector, contentSelector, activeCla
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (tabs);
+
+/***/ }),
+
+/***/ "./src/js/modules/timedLink.js":
+/*!*************************************!*\
+  !*** ./src/js/modules/timedLink.js ***!
+  \*************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (window.createTimedLink = function createTimedLink(element, timeout) {
+  setTimeout(function () {
+    window.location = element.href;
+  }, timeout);
+  return false;
+});
+
+/***/ }),
+
+/***/ "./src/js/modules/wow.js":
+/*!*******************************!*\
+  !*** ./src/js/modules/wow.js ***!
+  \*******************************/
+/*! exports provided: useWow */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useWow", function() { return useWow; });
+/* harmony import */ var wowjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! wowjs */ "./node_modules/wowjs/dist/wow.js");
+/* harmony import */ var wowjs__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(wowjs__WEBPACK_IMPORTED_MODULE_0__);
+
+var useWow = function useWow() {
+  var wow = new wowjs__WEBPACK_IMPORTED_MODULE_0__["WOW"]({
+    boxClass: 'wow',
+    // animated element css class (default is wow)
+    animateClass: '',
+    // animation css class (default is animated)
+    offset: 0,
+    // distance to the element when triggering the animation (default is 0)
+    mobile: true,
+    // trigger animations on mobile devices (default is true)
+    live: true,
+    // act on asynchronously loaded content (default is true)
+    scrollContainer: null // optional scroll container selector, otherwise use window
+
+  });
+  wow.init();
+};
 
 /***/ })
 

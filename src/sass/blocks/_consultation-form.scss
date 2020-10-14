@@ -10,12 +10,16 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            flex-direction: column-reverse;
             width: 100%;
+            margin-top: 25px;
+            .consultation__status-img{
+                width: 100px;
+            }
             .consultation__status{
                 display: none;
                 max-width: 50%;
                 text-align: center;
-                margin-top: 25px;
                 padding: 25px;
                 background-color: $bulka-light-green;
                 color: white;
@@ -97,10 +101,10 @@
         .container{
             .consultation__status-wrapper{
                 width: 100%;
+                margin-top: 15px;
                 .consultation__status{
                     max-width: 80%;
                     font-size: 15px;
-                    margin-top: 15px;
                     font-size: 15px;
                 }
             }

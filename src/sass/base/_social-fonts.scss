@@ -25,6 +25,12 @@ i {
     -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-circle-up {
+    &:before {
+        content: $icon-circle-up; 
+    }
+}
+
 .icon-facebook {
     &:before {
         content: $icon-facebook;

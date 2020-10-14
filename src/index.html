@@ -31,7 +31,7 @@
         <div class="container ">
             <div class="intro__content ">
                 <h1 class="intro__activity-kind ">СТУДИЯ ХУДОЖЕСТВЕННОЙ ВИЗУАЛИЗАЦИИ</h1>
-                <div class="intro__title ">Bulka</div>
+                <div class="intro__title wow tracking-in-expand">Bulka</div>
                 <div class="intro__town ">Kiev</div>
             </div>
         </div>
@@ -52,12 +52,20 @@
     <section class="visualization ">
         <div class="container ">
             <div class="visualization__tabs wow fade-in-1_5s">
-                <a class="visualization__tab " href="./interier-visualization.html">
+                <a onclick="if (
+                    /Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(
+                      navigator.userAgent)) {return createTimedLink(this, 1500)}"
+                    class="visualization__tab timed-link" href="./interier-visualization.html">
                     <div class=visualization__tab-text>
                         Интерьерная Визуализация
                     </div>
                 </a>
-                <a  class="visualization__tab " href="./object-visualization.html">
+                <a  onclick=" if (
+                    /Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(
+                      navigator.userAgent
+                    )
+            ) {return createTimedLink(this, 1500)}"
+                    class="visualization__tab timed-link" href="./object-visualization.html">
                     <div class=visualization__tab-text>
                         Предметная Визуализация
                     </div>
@@ -89,11 +97,12 @@
         <div class=container>
             <h2>Напишите и я перезвоню!</h2>
             <div>
-                <form action="https://formspree.io/f/mleogkqd" class=consultation__form method=POST>
+                <!-- https://formspree.io/f/mleogkqd -->
+                <form action="./assets/mailer/send.php" class=consultation__form method=POST>
                     <div class=input-wrapper>
                         <div class="required"><input type=text name=name placeholder="Ваше имя" required></div>
                         <div class="required"><input class="consultation__phone" type=phone name=phone placeholder="Ваш телефон" required></div>
-                        <div><input type=text name=email placeholder="Ваш E-mail"></div>
+                        <div><input type=email name=email placeholder="Ваш E-mail"></div>
                     </div>
                         <div class="required textarea-wrapper"><textarea name=message type=text placeholder="Задайте ваш вопрос здесь" required></textarea></div>
                     <button class="button consultation__button">Получить консультацию</button>
@@ -126,6 +135,10 @@
             <div>all right reserved(c) 2020</div>
         </div>
     </footer>
+
+    <a class="pageup">
+        <i id=up class="icon-circle-up"></i>
+    </a>
 
     <script src="script.js "></script>
 </body>
