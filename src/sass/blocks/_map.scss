@@ -1,0 +1,25 @@
+.map{
+    padding: 50px 0px 0px 0px;
+    height: 570px; 
+}
+
+@media (max-width: 1200px) {
+
+}
+
+@media (max-width: 991px) {
+
+}
+
+@media (max-width: 767px) {
+    .map{
+        padding: 25px 0px 0px 0px;
+        height: 370px; 
+    }
+}
+
+@media (max-width: 575px) {
+    .map{
+        height: 320px; 
+    }
+}

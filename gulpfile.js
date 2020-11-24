@@ -1,62 +1,62 @@
-"use strict";
+'use strict'
 
-const gulp = require("gulp");
-const webpack = require("webpack-stream");
-const browserSync = require("browser-sync");
-const sass = require("gulp-sass");
-const cleanCSS = require("gulp-clean-css");
-const autoprefixer = require("gulp-autoprefixer");
-const rename = require("gulp-rename");
-const imagemin = require("gulp-imagemin");
-const htmlmin = require("gulp-htmlmin");
+const gulp = require('gulp')
+const webpack = require('webpack-stream')
+const browserSync = require('browser-sync')
+const sass = require('gulp-sass')
+const cleanCSS = require('gulp-clean-css')
+const autoprefixer = require('gulp-autoprefixer')
+const rename = require('gulp-rename')
+const imagemin = require('gulp-imagemin')
+const htmlmin = require('gulp-htmlmin')
 
-const dist = "./dist/";
+const dist = './dist/'
 //const dist = '../../../../MAMP/htdocs/test/';
 
-gulp.task("html", function () {
+gulp.task('html', function () {
   return gulp
-    .src("./src/*.html")
+    .src('./src/*.html')
     .pipe(htmlmin({ collapseWhitespace: true }))
-    .pipe(gulp.dest(dist));
-});
+    .pipe(gulp.dest(dist))
+})
 
-gulp.task("styles", function () {
+gulp.task('styles', function () {
   return gulp
-    .src("src/sass/**/*.+(scss|sass)")
-    .pipe(sass({ outputStyle: "compressed" }).on("error", sass.logError))
-    .pipe(rename({ suffix: ".min", prefix: "" }))
+    .src('src/sass/**/*.+(scss|sass)')
+    .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
+    .pipe(rename({ suffix: '.min', prefix: '' }))
     .pipe(autoprefixer())
-    .pipe(cleanCSS({ compatibility: "ie8" }))
-    .pipe(gulp.dest("dist/css"))
-    .pipe(browserSync.stream());
-});
+    .pipe(cleanCSS({ compatibility: 'ie8' }))
+    .pipe(gulp.dest('dist/css'))
+    .pipe(browserSync.stream())
+})
 
-gulp.task("build-js", () => {
+gulp.task('build-js', () => {
   return gulp
-    .src("./src/js/main.js")
+    .src('./src/js/main.js')
     .pipe(
       webpack({
-        mode: "development",
+        mode: 'development',
         output: {
-          filename: "script.js",
+          filename: 'script.js',
         },
         watch: false,
-        devtool: "source-map",
+        devtool: 'source-map',
         module: {
           rules: [
             {
               test: /\.m?js$/,
               exclude: /(node_modules|bower_components)/,
               use: {
-                loader: "babel-loader",
+                loader: 'babel-loader',
                 options: {
                   presets: [
                     [
-                      "@babel/preset-env",
+                      '@babel/preset-env',
                       {
                         debug: true,
                         corejs: 3,
-                        useBuiltIns: "usage",
+                        useBuiltIns: 'usage',
                       },
                     ],
                   ],
@@ -68,8 +68,8 @@ gulp.task("build-js", () => {
       })
     )
     .pipe(gulp.dest(dist))
-    .on("end", browserSync.reload);
-});
+    .on('end', browserSync.reload)
+})
 
 // gulp.task("copy-assets", () => {
 //   return gulp
@@ -78,61 +78,59 @@ gulp.task("build-js", () => {
 //     .on("end", browserSync.reload);
 // });
 
-gulp.task("watch", () => {
+gulp.task('watch', () => {
   browserSync.init({
-    server: "./dist/",
+    server: './dist/',
     port: 4000,
     notify: true,
-  });
+  })
 
-  gulp.watch("./src/*.html", gulp.parallel("html"));
-  gulp.watch("./src/sass/**/*.+(scss|sass|css)", gulp.parallel("styles"));
-  gulp.watch("./src/assets/fonts/**/*", gulp.parallel("fonts"));
-  gulp.watch("./src/assets/**/*.php", gulp.parallel("php"));
-  gulp.watch("./src/assets/img/**/*", gulp.parallel("images"));
-  gulp.watch("./src/js/**/*.js", gulp.parallel("build-js"));
-});
+  gulp.watch('./src/*.html', gulp.parallel('html'))
+  gulp.watch('./src/sass/**/*.+(scss|sass|css)', gulp.parallel('styles'))
+  gulp.watch('./src/assets/fonts/**/*', gulp.parallel('fonts'))
+  gulp.watch('./src/assets/**/*.php', gulp.parallel('php'))
+  gulp.watch('./src/assets/img/**/*', gulp.parallel('images'))
+  gulp.watch('./src/js/**/*.js', gulp.parallel('build-js'))
+})
 
-gulp.task("fonts", function () {
+gulp.task('fonts', function () {
   return gulp
-    .src("./src/assets/fonts/**/*")
-    .pipe(gulp.dest(`${dist}assets/fonts`));
-});
+    .src('./src/assets/fonts/**/*')
+    .pipe(gulp.dest(`${dist}assets/fonts`))
+})
 
-gulp.task("images", function () {
+gulp.task('images', function () {
   return gulp
-    .src("./src/assets/img/**/*")
+    .src('./src/assets/img/**/*')
     .pipe(imagemin())
-    .pipe(gulp.dest(`${dist}assets/img`));
-});
+    .pipe(gulp.dest(`${dist}assets/img`))
+})
 
-gulp.task("php", function () {
-  return gulp
-    .src("./src/assets/**/*.php")
-    .pipe(gulp.dest(`${dist}assets`));
-});
+gulp.task('php', function () {
+  return gulp.src('./src/assets/**/*.php').pipe(gulp.dest(`${dist}assets`))
+})
 
 gulp.task(
-  "build",
+  'build',
   gulp.parallel(
-    "html",
+    'html',
     // "copy-assets",
-    "styles",
-    "images",
-    "php",
-    "fonts",
-    "build-js"
+    'styles',
+    'images',
+    'php',
+    'fonts',
+    'build-js'
   )
-);
+)
 
-gulp.task("build-prod-js", () => {
+gulp.task('build-prod-js', () => {
   return gulp
-    .src("./src/js/main.js")
+    .src('./src/js/main.js')
     .pipe(
       webpack({
-        mode: "production",
+        mode: 'production',
         output: {
-          filename: "script.js",
+          filename: 'script.js',
         },
         module: {
           rules: [
@@ -140,14 +138,14 @@ gulp.task("build-prod-js", () => {
               test: /\.m?js$/,
               exclude: /(node_modules|bower_components)/,
               use: {
-                loader: "babel-loader",
+                loader: 'babel-loader',
                 options: {
                   presets: [
                     [
-                      "@babel/preset-env",
+                      '@babel/preset-env',
                       {
                         corejs: 3,
-                        useBuiltIns: "usage",
+                        useBuiltIns: 'usage',
                       },
                     ],
                   ],
@@ -158,7 +156,7 @@ gulp.task("build-prod-js", () => {
         },
       })
     )
-    .pipe(gulp.dest(dist));
-});
+    .pipe(gulp.dest(dist))
+})
 
-gulp.task("default", gulp.parallel("watch", "build"));
+gulp.task('default', gulp.parallel('watch', 'build'))

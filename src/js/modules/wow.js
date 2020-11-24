@@ -8,6 +8,7 @@ export const useWow = () => {
     mobile: true, // trigger animations on mobile devices (default is true)
     live: true, // act on asynchronously loaded content (default is true)
     scrollContainer: null, // optional scroll container selector, otherwise use window
+    live: false,
   })
 
   wow.init()

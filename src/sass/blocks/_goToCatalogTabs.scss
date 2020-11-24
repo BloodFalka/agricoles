@@ -1,0 +1,218 @@
+.go-to-catalog-tabs{
+    user-select: none;
+    padding: 50px 0px 25px 0px;
+    display: flex;
+    align-items: space-around;
+    justify-content: space-evenly;
+    .go-to-catalog-tab{
+        cursor: pointer;
+        text-decoration: none;
+        width: 43%;
+        &-img{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-position: center;
+            background-size: cover;
+            border-radius: 0.3rem;
+            width: 100%;
+            height: 260px;
+            position: relative;
+            &:after {
+                border-radius: .3rem;
+                background-color: rgb(0, 0, 0);
+                content: "";
+                display: block;
+                height: 100%;
+                width: 100%;
+                position: absolute;
+                top: 0; left: 0;
+                opacity: 0.3;
+                width: 100%;
+                transition: opacity 0.5s;
+            }
+            div{
+                z-index: 1;
+                border-radius: 0.3em;
+                width: 80%;
+                height: 60%;
+                background-color: rgba($first-color, .5);
+                transition: background-color 0.8s ease;
+                backdrop-filter: blur(7px);
+                -webkit-backdrop-filter: blur(7px);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                h2{
+                    font-size: 1.2rem;
+                    color: rgb(255, 255, 255);
+                    text-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+                    text-transform: uppercase;
+                    font-weight: bold;
+                }
+            }
+        }
+        &:hover, &:active{
+            .go-to-catalog-tab-img{
+                &:after{
+                    opacity: 0;
+                }
+            }
+            div{
+                background-color: rgba($first-color, .8);
+                h2{
+                    @include underline-animated
+                }
+            }
+        }
+    }
+    a:last-child{
+        .go-to-catalog-tab{
+            &-img{
+                div{
+                    background-color:  rgba($second-color, .5);
+                    &:hover, &:active{
+                        background-color: rgba($second-color, .8);
+                    }
+            }
+        }
+    }
+    }
+}
+
+@media (max-width: 991px) {
+    
+}
+
+
+@media (max-width: 767px) {
+    .go-to-catalog-tabs{
+        user-select: none;
+        padding: 50px 0px 25px 0px;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        flex-direction: column;
+        .go-to-catalog-tab+.go-to-catalog-tab{
+            margin-top: 40px;
+        }
+        .go-to-catalog-tab{
+            cursor: pointer;
+            text-decoration: none;
+            width: 90%;
+            &-img{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-position: center;
+                background-size: cover;
+                border-radius: 0.3em;
+                width: 100%;
+                height: 260px;
+                div{
+                    border-radius: 0.3em;
+                    width: 80%;
+                    background-color: rgba($first-color, .5);
+                    transition: background-color 0.8s ease;
+                    backdrop-filter: blur(7px);
+                    -webkit-backdrop-filter: blur(7px);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    h2{
+                        font-size: 1.2rem;
+                        color: rgb(255, 255, 255);
+                        text-transform: uppercase;
+                        font-weight: bold;
+                    }
+                }
+            }
+            &:hover, &:active{
+                div{
+                    background-color: rgba($first-color, .8);
+                    h2{
+                        @include underline-animated
+                    }
+                }
+            }
+        }
+        a:last-child{
+            .go-to-catalog-tab{
+                &-img{
+                    div{
+                        background-color:  rgba($second-color, .5);
+                        &:hover, &:active{
+                            background-color: rgba($second-color, .8);
+                        }
+                }
+            }
+        }
+        }
+    }
+}
+
+@media (max-width: 575px) {
+    .go-to-catalog-tabs{
+        user-select: none;
+        padding: 30px 0px 15px 0px;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        flex-direction: column;
+        .go-to-catalog-tab+.go-to-catalog-tab{
+            margin-top: 30px;
+        }
+        .go-to-catalog-tab{
+            cursor: pointer;
+            text-decoration: none;
+            width: 90%;
+            &-img{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-position: center;
+                background-size: cover;
+                border-radius: 0.3em;
+                width: 100%;
+                height: 180px;
+                div{
+                    border-radius: 0.3em;
+                    width: 80%;
+                    background-color: rgba($first-color, .5);
+                    transition: background-color 0.8s ease;
+                    backdrop-filter: blur(7px);
+                    -webkit-backdrop-filter: blur(7px);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    h2{
+                        font-size: 1rem;
+                        color: rgb(255, 255, 255);
+                        text-transform: uppercase;
+                        font-weight: bold;
+                    }
+                }
+            }
+            &:hover, &:active{
+                div{
+                    background-color: rgba($first-color, .8);
+                    h2{
+                        @include underline-animated
+                    }
+                }
+            }
+        }
+        a:last-child{
+            .go-to-catalog-tab{
+                &-img{
+                    div{
+                        background-color:  rgba($second-color, .5);
+                        &:hover, &:active{
+                            background-color: rgba($second-color, .8);
+                        }
+                }
+            }
+        }
+        }
+    }
+}

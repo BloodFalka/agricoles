@@ -1,0 +1,127 @@
+.slider{
+    user-select: none;
+    position: relative;
+    min-width: 0;
+    &__arrow{
+        z-index: 5;
+        cursor: pointer;
+        position: absolute;
+        top:50%;
+        transform: translateY(-50%);
+        width: 50px;
+        height: 50px;   
+        opacity: 0.5;
+        transition: opacity 0.4s ease;
+        &-prev{
+            left: 25px;
+        }
+        &-next{
+            right: 25px;
+            transform: rotate(180deg) translateY(25px);
+        }
+        &:hover{
+            opacity: 1;
+        }
+    }
+    &__slide{
+        width: 100%;
+        .slide-img{
+            height: 500px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            background-position: center;
+            background-size: cover;
+            div{
+                width: 40%;
+                font-size: 3rem;
+                line-height: 4rem;
+                font-weight: bold;
+                color: white;
+                margin-top: 150px;
+                margin-right: 150px;    
+                span{
+                    color: $dark-red;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 1200px) {
+    .slider{
+        &__arrow{
+        }
+        &__slide{
+            .slide-img{
+                height: 500px;
+                div{
+                    width: 40%;
+                    font-size: 2.8rem;
+                    line-height: 3.6rem;
+                    margin-top: 150px;
+                    margin-right: 150px;    
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 991px) {
+    .slider{
+        &__slide{
+            .slide-img{
+                height: 500px;
+                div{
+                    width: 40%;
+                    font-size: 2.2rem;
+                    line-height: 3.2rem;
+                    margin-top: 150px;
+                    margin-right: 150px;    
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .slider{
+        &__slide{
+            .slide-img{
+                height: 400px;
+                align-items: center;
+                div{
+                    text-align: left;
+                    width: 60%;
+                    font-size: 2.1rem;
+                    line-height: 2.8rem;
+                    margin-top: 160px;
+                    margin-right: 75px;    
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 575px) {
+    .slider{
+        margin-top: 50px;
+        &__arrow{
+            display: none;
+        }
+        &__slide{
+            .slide-img{
+                height: 250px;
+                align-items: center;
+
+                div{
+                    font-size: 1.2rem;
+                    line-height: 1.6rem;
+                    margin-top: 100px;
+                    margin-right: 20px;    
+                }
+            }
+        }
+    }
+}

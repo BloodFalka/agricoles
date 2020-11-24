@@ -88,16 +88,20 @@ address {
 dl,
 ol,
 ul {
-    margin-top: 0;
-    margin-bottom: 1rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 ol ol,
 ol ul,
 ul ol,
 ul ul {
-    margin-bottom: 0;
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
+
 
 dt {
     font-weight: 700;
@@ -138,14 +142,13 @@ sup {
 }
 
 a {
-    color: #007bff;
+    color:black;
     text-decoration: none;
     background-color: transparent;
 }
 
 a:hover {
-    color: #0056b3;
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 a:not([href]) {

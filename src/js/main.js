@@ -1,28 +1,34 @@
-import { macy } from './modules/macy'
-import modals from './modules/modals'
-import sliders from './modules/sliders'
-import forms from './modules/forms'
-import mask from './modules/mask'
-import tabs from './modules/tabs'
-import { useWow } from './modules/wow'
-import createTimedLink from './modules/timedLink'
 import { moveUp } from './modules/moveUp'
-
+import sliders from './modules/sliders'
+import { Swiper, Navigation, Pagination, Autoplay } from 'swiper'
 window.addEventListener('DOMContentLoaded', () => {
   'use strict'
+  Swiper.use([Navigation, Pagination, Autoplay])
+  const MainSwiper = new Swiper('.main-slider', {
+    loop: true,
+    autoplay: true,
+    autoplaySpeed: 5000,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+      dynamicBullets: true,
+    },
+  })
 
-  if (document.querySelectorAll('.visualization__items').length) modals()
-  macy()
-  useWow()
+  const Hm = document.querySelector('.header__hamburger-menu')
+  Hm.addEventListener('click', (e) => {
+    if (e.target) {
+      const nav = document.querySelector('.header__navigation')
+      Hm.classList.toggle('open')
+      document.body.classList.toggle('lock-scroll')
 
-  if (document.querySelectorAll('.consultation__form').length) {
-    mask('.consultation__phone')
-    forms(
-      '.consultation__form',
-      '.consultation__button',
-      '.consultation__status'
-    )
-  }
+      nav.classList.toggle('open')
+    }
+  })
 
   moveUp()
 })

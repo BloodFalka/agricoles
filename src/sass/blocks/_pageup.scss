@@ -5,8 +5,9 @@
         bottom: 40px;
         right: 50px;
         position: fixed;
-        color: $bulka-light-green;
-        text-shadow: 1px 1px 5px $bulkas-green;
+        z-index: 100;
+        color: rgba(#6ec575, .8);
+        text-shadow: 1px 1px 8px rgba(62, 78, 64, 0.5);
         font-size: 50px;
     }
 }
