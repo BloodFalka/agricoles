@@ -1,0 +1,52 @@
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 70px;
+    a{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+            width: auto;
+            height: 70px;
+        }
+    }
+}
+
+@media (max-width: 991px) {
+    .logo {
+        height: 60px;
+        a{
+            img {
+                width: auto;
+                height: 60px;
+            }
+        }
+    }
+}
+
+
+@media (max-width: 767px) {
+    .logo {
+        height: 60px;
+        a{
+            img {
+                width: auto;
+                height: 60px;
+            }
+        }
+    }
+}
+
+@media (max-width: 575px) {
+    .logo {
+        height: 30px;
+        a{
+            img {
+                width: auto;
+                height: 30px;
+            }
+        }
+    }
+}

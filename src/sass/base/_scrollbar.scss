@@ -1,0 +1,12 @@
+::-webkit-scrollbar {
+    /* 1 - скроллбар */
+    width: 7px;
+    height: 7px;
+    background-color: $dark-grey;
+}
+
+::-webkit-scrollbar-thumb {
+    /* 5 - ползунок */
+    border-radius: 7px;
+    background-color: $first-color;
+}

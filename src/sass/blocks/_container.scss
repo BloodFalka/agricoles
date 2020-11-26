@@ -1,0 +1,17 @@
+.container {
+    display: flex;
+    height: 100%;
+    position: relative;
+    width: 1440px;
+    padding: 0 15px;
+    text-align: center;
+    &_slim {
+        padding: 0;
+    }
+}
+
+@media (max-width: 1440px) {
+    .container {
+        width: 100%;
+    }
+}

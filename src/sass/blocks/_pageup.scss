@@ -1,0 +1,41 @@
+.pageup {
+    .icon-circle-up{
+        cursor: pointer;
+        display: none;
+        bottom: 40px;
+        right: 50px;
+        position: fixed;
+        z-index: 100;
+        color: rgba(#6ec575, .8);
+        text-shadow: 1px 1px 8px rgba(62, 78, 64, 0.5);
+        font-size: 50px;
+    }
+}
+
+@media (max-width: 991px) {
+    .pageup {
+        .icon-circle-up{
+            bottom: 30px;
+            right: 30px;
+            font-size: 50px;
+        }
+    }
+}
+
+
+@media (max-width: 767px) {
+    .pageup {
+        .icon-circle-up{
+
+            font-size: 40px;
+        }
+    }
+}
+
+@media (max-width: 575px) {
+    .pageup {
+        .icon-circle-up{
+
+        }
+    }
+}
