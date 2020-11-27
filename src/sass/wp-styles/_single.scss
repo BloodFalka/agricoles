@@ -1,0 +1,147 @@
+.search-form{
+    display: none;
+}
+
+h1{
+    @extend .title;
+    padding: 10px 10px;
+}
+
+.site-main{
+    margin-top: 50px;
+    flex-direction: column;
+    @extend .container;
+    align-items: center;
+    position: relative;
+    &:before {
+        content : "";
+        position: absolute;
+        left    : 50%;
+        transform: translateX(-50%);
+        top  : 0;
+        height  : 1px;
+        width   : 50%;  /* or 100px */
+        border-top: solid 1px #6ec575;
+      }
+}
+.post{
+    padding: 15px;
+    width: 1024px;
+    position: relative;
+    .entry-header{
+        .entry-meta{
+            .updated{
+                display: none;
+            }
+            // display: none;
+        }
+    }
+    .entry-footer{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        .edit-link{
+            display: flex;
+            position: absolute;
+            bottom: 5px;
+            right: 15px;
+            opacity: 0.7;
+            text-align: center;
+            height: 50px;
+            &:hover{
+                opacity: 0.9;
+            }
+            .post-edit-link{
+                background-color:#0c212f;
+                color: white;
+                border-radius: 0.3rem;
+                padding: 10px;
+                font-size: 20px;
+            }
+        }
+    }
+    img{
+        border-radius: 0.3rem;
+        height: auto;
+    }
+    p{
+        text-align: left;
+    }
+    &-thumbnail{
+        width: 100%;
+        height: auto;
+        margin: 0 auto;
+        img{
+            width: 50%;
+            height: auto;
+            margin: 0 auto;
+        }
+    }
+}
+
+.comments-area{
+    form{
+        .logged-in-as{
+            display: none;
+        }
+        .comment-form-url{
+            display: none;
+        }
+        .comment-form-comment{
+            label{
+                display: none;
+            }
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            textarea{
+                border-radius: 0.3rem;
+                padding: 15px;
+                resize: none;
+            }
+
+        }
+        input{
+            border-radius: 0.3rem;
+            padding: 3px;
+        }
+        label{
+            line-height: 0;
+        }
+        .form-submit{
+            .submit{
+                @extend .button;
+                background-color: rgba($first-color, 0.8);
+            }
+        }
+    }
+}
+
+@media (max-width: 1024px) {
+    .post{
+        width: auto;
+    }
+}
+
+@media (max-width: 575px) {
+    .post{
+        &-thumbnail{
+            img{
+                width: 90vw;
+            }
+        }
+    }
+    .comments-area{
+        form{
+
+            .comment-form-comment{
+
+                textarea, input{
+                    width: 90vw;
+                }
+            }
+        }
+    }
+}

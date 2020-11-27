@@ -3,6 +3,9 @@
     padding: 25px 0px;
     text-transform: uppercase;
     font-weight: bold;
+    a{
+        color: $first-color;
+    }
 }
 
 @media (max-width: 991px) {
@@ -17,6 +20,7 @@
 @media (max-width: 767px) {
     .title{
         font-size: 1rem;
+        line-height: 1.2rem;
         padding: 25px 0px;
         text-transform: uppercase;
         font-weight: bold;

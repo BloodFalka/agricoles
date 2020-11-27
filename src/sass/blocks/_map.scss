@@ -1,6 +1,9 @@
 .map{
     padding: 50px 0px 0px 0px;
-    height: 570px; 
+    height: 570px;
+    .ol-full-screen-false{
+        display: none;
+    }
 }
 
 @media (max-width: 1200px) {

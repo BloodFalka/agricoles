@@ -1,0 +1,24 @@
+.site-main{
+        a{
+            color: $first-color;
+            font-weight: bold;
+        }
+        ul{
+        text-align: left;
+        li{
+            margin-left: 15px;
+            position: relative;
+            &:before{
+                background-color: $first-color;
+                position: absolute;
+                top: 50%;
+                left: -15px;
+                transform: translateY(-50%);
+                height: 5px;
+                width: 5px;
+                content: "";
+                // padding-right: 15px; 
+            }
+        }
+    }
+}

@@ -5,6 +5,8 @@
 
 @import "base/icon-fonts";
 @import "base/titles";
+@import "base/lists";
+@import "base/paragraphs";
 @import "base/hamburger";
 @import "base/contacts-data";
 
@@ -41,3 +43,5 @@ body {
 @import "blocks/contacts";
 @import "blocks/footer";
 @import "blocks/pageup";
+
+@import "wp-styles/single";
