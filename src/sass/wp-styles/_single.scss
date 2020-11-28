@@ -8,7 +8,6 @@ h1{
 }
 
 .site-main{
-    margin-top: 50px;
     flex-direction: column;
     @extend .container;
     align-items: center;
@@ -126,6 +125,9 @@ h1{
 }
 
 @media (max-width: 575px) {
+    .site-main{
+        padding-top: 50px;
+    }
     .post{
         &-thumbnail{
             img{
